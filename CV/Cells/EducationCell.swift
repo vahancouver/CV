@@ -22,16 +22,14 @@ class EducationCell: UITableViewCell {
     }
     
     private func downloadUniversityLogo(urlAddress: String?) {
-        DispatchQueue.global(qos: .background).async {
-            guard let urlAddress = urlAddress,
-                let url = URL(string: urlAddress),
-                let data = try? Data(contentsOf: url),
-                let image: UIImage = UIImage(data: data) else {
-                    DispatchQueue.main.async {
-                        self.universityLogoImage.image = UIImage(named: "placeholder")
-                    }
-                    return
+        ImageService.downloadImage(with: urlAddress) { (image, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.universityLogoImage.image = UIImage(named: "placeholder")
+                }
+                return
             }
+            
             DispatchQueue.main.async {
                 self.universityLogoImage.image = image
             }

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     private var cv: CV?
     
-    var vSpinner : UIView?
+    var spinner: UIView?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -33,7 +33,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Loading..."
-        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.bindFrameToSuperviewBounds()
         
@@ -44,12 +43,14 @@ class ViewController: UIViewController {
         
         showSpinner()
         CVService.loadCV(with: urlAddress) { (cv, error) in
+            self.removeSpinner()
             if let error = error {
+                self.title = "Can't load CV this time."
                 self.showErrorAlert(withMessage: error.description)
                 return
             }
+            
             self.cv = cv
-            self.removeSpinner()
             DispatchQueue.main.async {
                 self.title = self.cv?.name
                 self.tableView.reloadData()
@@ -147,13 +148,13 @@ extension ViewController {
             self.view.addSubview(spinnerView)
         }
         
-        vSpinner = spinnerView
+        self.spinner = spinnerView
     }
     
     func removeSpinner() {
         DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
+            self.spinner?.removeFromSuperview()
+            self.spinner = nil
         }
     }
     

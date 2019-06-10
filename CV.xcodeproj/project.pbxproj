@@ -19,6 +19,8 @@
 		3434739B22AE20CA00795095 /* ExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434739A22AE20CA00795095 /* ExperienceCell.swift */; };
 		3434739D22AE28DA00795095 /* EducationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434739C22AE28DA00795095 /* EducationCell.swift */; };
 		3434739F22AEA28C00795095 /* CVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434739E22AEA28C00795095 /* CVService.swift */; };
+		343473A422AEAA6000795095 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343473A322AEAA6000795095 /* ImageService.swift */; };
+		343473A622AEAAAF00795095 /* CVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343473A522AEAAAF00795095 /* CVError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		3434739A22AE20CA00795095 /* ExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCell.swift; sourceTree = "<group>"; };
 		3434739C22AE28DA00795095 /* EducationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCell.swift; sourceTree = "<group>"; };
 		3434739E22AEA28C00795095 /* CVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVService.swift; sourceTree = "<group>"; };
+		343473A322AEAA6000795095 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		343473A522AEAAAF00795095 /* CVError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,16 +72,16 @@
 		3434737C22ADD12E00795095 /* CV */ = {
 			isa = PBXGroup;
 			children = (
+				343473A022AEA29400795095 /* Services */,
 				3434739322AE15F300795095 /* Models */,
 				3434739222AE15E400795095 /* Extensions */,
 				3434738F22AE14F900795095 /* Cells */,
+				343473A122AEAA0700795095 /* Controllers */,
+				343473A222AEAA2D00795095 /* Resources */,
 				3434737D22ADD12E00795095 /* AppDelegate.swift */,
-				3434737F22ADD12E00795095 /* ViewController.swift */,
 				3434738122ADD12E00795095 /* Main.storyboard */,
-				3434738422ADD13000795095 /* Assets.xcassets */,
 				3434738622ADD13000795095 /* LaunchScreen.storyboard */,
 				3434738922ADD13000795095 /* Info.plist */,
-				343473A022AEA29400795095 /* Services */,
 			);
 			path = CV;
 			sourceTree = "<group>";
@@ -112,9 +116,27 @@
 		343473A022AEA29400795095 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				343473A522AEAAAF00795095 /* CVError.swift */,
 				3434739E22AEA28C00795095 /* CVService.swift */,
+				343473A322AEAA6000795095 /* ImageService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		343473A122AEAA0700795095 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3434737F22ADD12E00795095 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		343473A222AEAA2D00795095 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3434738422ADD13000795095 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,9 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343473A622AEAAAF00795095 /* CVError.swift in Sources */,
 				3434739B22AE20CA00795095 /* ExperienceCell.swift in Sources */,
 				3434739722AE187A00795095 /* Item.swift in Sources */,
 				3434739D22AE28DA00795095 /* EducationCell.swift in Sources */,
+				343473A422AEAA6000795095 /* ImageService.swift in Sources */,
 				3434738022ADD12E00795095 /* ViewController.swift in Sources */,
 				3434739F22AEA28C00795095 /* CVService.swift in Sources */,
 				3434739922AE1F4500795095 /* CV.swift in Sources */,

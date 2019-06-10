@@ -8,23 +8,6 @@
 
 import Foundation
 
-enum CVError: Error {
-    case badURL
-    case badConnection 
-    case badJSON
-    
-    var description: String {
-        switch self {
-        case .badURL:
-            return "Url conversion failed"
-        case .badConnection:
-            return "Connection failed"
-        case .badJSON:
-            return "Parsing json failed"
-        }
-    }
-}
-
 struct CVService {
     static func loadCV(with urlAddress: String, completionHandler: @escaping (CV?, CVError?) -> Void) {
         guard let url = URL(string: urlAddress) else

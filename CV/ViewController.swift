@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let urlAddress = "https://gist.githubusercontent.com/vahancouver/6cc6539d3df7526c57c3447eb3e8374a/raw/8011eb85f08c47d763bcd9c972c28dce8fc697bb/CV.json"
+    
     private var cv: CV?
     
     var vSpinner : UIView?
@@ -35,40 +37,25 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.bindFrameToSuperviewBounds()
         
-        showSpinner()
         loadCV()
     }
     
     private func loadCV() {
-        let urlAddress = "https://gist.githubusercontent.com/vahancouver/6cc6539d3df7526c57c3447eb3e8374a/raw/8011eb85f08c47d763bcd9c972c28dce8fc697bb/CV.json"
         
-        guard let url = URL(string: urlAddress) else
-        {
-            showErrorAlert(withMessage: "Url conversion failed")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (jsonData, response, error) -> Void in
-            guard error == nil, let jsonData = jsonData else {
-                self.showErrorAlert(withMessage: "Loading json failed")
+        showSpinner()
+        CVService.loadCV(with: urlAddress) { (cv, error) in
+            if let error = error {
+                self.showErrorAlert(withMessage: error.description)
                 return
             }
-            do {
-                let decoder = JSONDecoder()
-                self.cv = try decoder.decode(CV.self, from: jsonData)
-                self.removeSpinner()
-                DispatchQueue.main.async {
-                    self.title = self.cv?.name
-                    self.tableView.reloadData()
-                }
-                
-            } catch {
-                self.showErrorAlert(withMessage: error.localizedDescription)
+            self.cv = cv
+            self.removeSpinner()
+            DispatchQueue.main.async {
+                self.title = self.cv?.name
+                self.tableView.reloadData()
             }
-            }.resume()
+        }
     }
-    
-    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -181,6 +168,3 @@ extension ViewController {
     }
     
 }
-
-
-
